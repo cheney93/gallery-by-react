@@ -88,6 +88,20 @@ class ImageFigure extends React.Component {
   }
 }
 
+class ControllerUnit extends React.Component{
+  handleClick(e) {
+
+    e.preventDefault();
+    e.stopPropagation()
+  }
+
+  render() {
+    return (
+      <span className="controller-unit" onClick={this.handleClick}></span>
+    )
+  }
+}
+
 class AppComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -286,9 +300,11 @@ class AppComponent extends React.Component {
         <ImageFigure data={value} ref={'imageFigure' + index}
                      arrange={this.state.imgArrangeArr[index]}
                      center={this.center(index)}
-                     inverse={this.inverse(index)}
-        />
-      )}.bind(this));
+                     inverse={this.inverse(index)}/>);
+
+      controllerUnits.push(<ControllerUnit/>)
+    }.bind(this));
+
 
     return (
       <section className="stage" ref="stage">
